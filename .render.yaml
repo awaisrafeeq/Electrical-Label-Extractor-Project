@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: electrical-label-extractor
+    env: python
+    rootDir: MVP
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn web.backend.api:app -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$PORT
+    autoDeploy: true
+    envVars:
+      - key: VISION_PROVIDER
+        value: openai
+      - key: OPENAI_MODEL
+        value: gpt-4o
+      - key: ANTHROPIC_MODEL
+        value: claude-3-haiku-20240307
+    # If you want outputs to persist across deploys, uncomment below to mount a disk:
+    # disks:
+    #   - name: data
+    #     mountPath: /opt/render/project/src/output
+    #     sizeGB: 1

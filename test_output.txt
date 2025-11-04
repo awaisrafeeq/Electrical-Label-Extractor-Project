@@ -1,0 +1,62 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0 -- /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP
+plugins: asyncio-1.2.0, anyio-4.11.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 27 items
+
+test_suite.py::TestConfiguration::test_settings_loaded PASSED            [  3%]
+test_suite.py::TestConfiguration::test_equipment_types_defined PASSED    [  7%]
+test_suite.py::TestConfiguration::test_output_directories_exist PASSED   [ 11%]
+test_suite.py::TestLabelData::test_label_creation PASSED                 [ 14%]
+test_suite.py::TestLabelData::test_label_with_optional_fields PASSED     [ 18%]
+test_suite.py::TestPDFConverter::test_pdf_converter_initialization PASSED [ 22%]
+test_suite.py::TestPDFConverter::test_get_page_count PASSED              [ 25%]
+test_suite.py::TestPDFConverter::test_image_resize_logic PASSED          [ 29%]
+test_suite.py::TestVisionAnalyzer::test_analyzer_initialization PASSED   [ 33%]
+test_suite.py::TestVisionAnalyzer::test_extract_labels_mock PASSED       [ 37%]
+test_suite.py::TestVisionAnalyzer::test_parse_vision_response PASSED     [ 40%]
+test_suite.py::TestExcelExporter::test_exporter_initialization PASSED    [ 44%]
+test_suite.py::TestExcelExporter::test_export_labels PASSED              [ 48%]
+test_suite.py::TestExcelExporter::test_export_with_validation_errors PASSED [ 51%]
+test_suite.py::TestLabelValidator::test_validator_initialization PASSED  [ 55%]
+test_suite.py::TestLabelValidator::test_valid_label FAILED               [ 59%]
+test_suite.py::TestLabelValidator::test_invalid_label_missing_fields FAILED [ 62%]
+test_suite.py::TestLabelValidator::test_validate_all_labels PASSED       [ 66%]
+test_suite.py::TestLabelStatistics::test_statistics_initialization PASSED [ 70%]
+test_suite.py::TestLabelStatistics::test_equipment_type_count FAILED     [ 74%]
+test_suite.py::TestLabelStatistics::test_generate_report PASSED          [ 77%]
+test_suite.py::TestPipeline::test_pipeline_initialization PASSED         [ 81%]
+test_suite.py::TestPipeline::test_process_image_mock PASSED              [ 85%]
+test_suite.py::TestPipeline::test_retry_logic PASSED                     [ 88%]
+test_suite.py::TestIntegration::test_real_pdf_processing FAILED          [ 92%]
+test_suite.py::TestFileOperations::test_nonexistent_file_handling PASSED [ 96%]
+test_suite.py::TestFileOperations::test_output_directory_creation PASSED [100%]
+
+=================================== FAILURES ===================================
+/Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/test_suite.py:256: AttributeError: 'LabelValidator' object has no attribute 'validate'
+/Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/test_suite.py:267: AttributeError: 'LabelValidator' object has no attribute 'validate'
+/Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/test_suite.py:327: AttributeError: 'LabelStatistics' object has no attribute 'total_labels'
+/Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/venv/lib/python3.13/site-packages/anthropic/_base_client.py:1112: anthropic.NotFoundError: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-20241022'}, 'request_id': 'req_011CUN8pTCzfhyodMa2a7uPN'}
+=============================== warnings summary ===============================
+config.py:9
+  /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/config.py:9: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+test_suite.py::TestIntegration::test_real_pdf_processing
+  /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/venv/lib/python3.13/site-packages/PIL/Image.py:3432: DecompressionBombWarning: Image size (155520000 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+    warnings.warn(
+
+test_suite.py::TestIntegration::test_real_pdf_processing
+  /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/src/vision_ai/analyzer.py:215: DeprecationWarning: The model 'claude-3-5-sonnet-20241022' is deprecated and will reach end-of-life on October 22, 2025.
+  Please migrate to a newer model. Visit https://docs.anthropic.com/en/docs/resources/model-deprecations for more information.
+    response = self.client.messages.create(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_suite.py::TestLabelValidator::test_valid_label - AttributeError: ...
+FAILED test_suite.py::TestLabelValidator::test_invalid_label_missing_fields
+FAILED test_suite.py::TestLabelStatistics::test_equipment_type_count - Attrib...
+FAILED test_suite.py::TestIntegration::test_real_pdf_processing - anthropic.N...
+================== 4 failed, 23 passed, 3 warnings in 13.11s ===================

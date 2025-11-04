@@ -1,0 +1,42 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0 -- /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP
+plugins: asyncio-1.2.0, anyio-4.11.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 27 items / 1 deselected / 26 selected
+
+test_suite.py::TestConfiguration::test_settings_loaded PASSED            [  3%]
+test_suite.py::TestConfiguration::test_equipment_types_defined PASSED    [  7%]
+test_suite.py::TestConfiguration::test_output_directories_exist PASSED   [ 11%]
+test_suite.py::TestLabelData::test_label_creation PASSED                 [ 15%]
+test_suite.py::TestLabelData::test_label_with_optional_fields PASSED     [ 19%]
+test_suite.py::TestPDFConverter::test_pdf_converter_initialization PASSED [ 23%]
+test_suite.py::TestPDFConverter::test_get_page_count PASSED              [ 26%]
+test_suite.py::TestPDFConverter::test_image_resize_logic PASSED          [ 30%]
+test_suite.py::TestVisionAnalyzer::test_analyzer_initialization PASSED   [ 34%]
+test_suite.py::TestVisionAnalyzer::test_extract_labels_mock PASSED       [ 38%]
+test_suite.py::TestVisionAnalyzer::test_parse_vision_response PASSED     [ 42%]
+test_suite.py::TestExcelExporter::test_exporter_initialization PASSED    [ 46%]
+test_suite.py::TestExcelExporter::test_export_labels PASSED              [ 50%]
+test_suite.py::TestExcelExporter::test_export_with_validation_errors PASSED [ 53%]
+test_suite.py::TestLabelValidator::test_validator_initialization PASSED  [ 57%]
+test_suite.py::TestLabelValidator::test_valid_label PASSED               [ 61%]
+test_suite.py::TestLabelValidator::test_invalid_label_missing_fields PASSED [ 65%]
+test_suite.py::TestLabelValidator::test_validate_all_labels PASSED       [ 69%]
+test_suite.py::TestLabelStatistics::test_statistics_initialization PASSED [ 73%]
+test_suite.py::TestLabelStatistics::test_equipment_type_count PASSED     [ 76%]
+test_suite.py::TestLabelStatistics::test_generate_report PASSED          [ 80%]
+test_suite.py::TestPipeline::test_pipeline_initialization PASSED         [ 84%]
+test_suite.py::TestPipeline::test_process_image_mock PASSED              [ 88%]
+test_suite.py::TestPipeline::test_retry_logic PASSED                     [ 92%]
+test_suite.py::TestFileOperations::test_nonexistent_file_handling PASSED [ 96%]
+test_suite.py::TestFileOperations::test_output_directory_creation PASSED [100%]
+
+=============================== warnings summary ===============================
+config.py:9
+  /Users/awaisrafeeq/Documents/python/Automated Electrical Label Extraction/MVP/config.py:9: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================= 26 passed, 1 deselected, 1 warning in 3.53s ==================

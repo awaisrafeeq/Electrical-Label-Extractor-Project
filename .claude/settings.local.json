@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(chmod:*)",
+      "Bash(python:*)",
+      "Bash(pdfinfo:*)",
+      "Bash(brew install:*)",
+      "Bash(python3 -m pip install:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(python3:*)",
+      "Bash(tee:*)",
+      "Bash(curl:*)",
+      "Bash(playwright install:*)",
+      "Read(//Users/awaisrafeeq/Documents/python/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

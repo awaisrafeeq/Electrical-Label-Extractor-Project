@@ -1,0 +1,33 @@
+# Core dependencies for Electrical Label Extraction MVP
+# Python 3.10+ required
+# OPTIMIZED FOR RENDER FREE PLAN (512 MB RAM)
+
+# PDF and Image Processing
+pypdfium2>=4.26.0
+Pillow>=10.2.0
+
+# Vision AI APIs
+anthropic>=0.18.1
+openai>=1.12.0
+
+# Excel Generation
+pandas>=2.1.4
+openpyxl>=3.1.2
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.5.3
+pydantic-settings>=2.1.0
+
+# NOTE: Removed heavy dependencies not used in Vision AI-only approach:
+# - paddleocr, paddlepaddle (OCR not implemented)
+# - opencv-python (not needed)
+# - pdf2image (using pypdfium2 instead)
+# - xlsxwriter (openpyxl handles everything)
+# - tqdm (using FastAPI background tasks)
+# - pytest (not needed in production)

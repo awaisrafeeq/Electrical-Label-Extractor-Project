@@ -1,0 +1,49 @@
+# Render.com Deployment Configuration
+# Electrical Label Extractor Web Application
+# Optimized for FREE PLAN
+
+services:
+  - type: web
+    name: electrical-label-extractor
+    env: python
+    region: oregon  # Change to your preferred region
+    plan: free  # Free tier (512 MB RAM, spins down after 15 min)
+
+    # Build settings
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+
+    # Start command (no reload in production)
+    startCommand: uvicorn web.backend.api:app --host 0.0.0.0 --port $PORT --workers 1
+
+    # Environment variables
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0  # Stable version, good compatibility
+
+      - key: VISION_PROVIDER
+        value: anthropic  # Claude Haiku is cheaper
+
+      - key: PDF_DPI
+        value: 150  # Lower DPI to reduce memory usage
+
+      - key: MAX_IMAGE_SIZE
+        value: 1536  # Reduce to save memory
+
+      # API Keys (set these in Render dashboard as secrets)
+      - key: OPENAI_API_KEY
+        sync: false  # Set manually in dashboard
+
+      - key: ANTHROPIC_API_KEY
+        sync: false  # Set manually in dashboard
+
+    # Health check
+    healthCheckPath: /api/jobs
+
+    # Auto-deploy from main branch
+    autoDeploy: true
+
+    # NOTE: Free plan does NOT support persistent disks
+    # All uploaded files are stored in ephemeral storage
+    # Files will be lost when service restarts (after 15 min inactivity)
